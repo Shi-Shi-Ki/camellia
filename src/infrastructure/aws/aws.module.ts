@@ -1,5 +1,5 @@
 import { Module } from "@nestjs/common"
-import { LlmGatewayService } from "./bedrock/llm.gateway.service"
+import { BedRockGatewayService } from "./bedrock/bedrock.gateway.service"
 import { I_LLM_GATEWAY } from "@/domain/gateways/i-llm.gateway"
 import { BedrockRuntimeClient } from "@aws-sdk/client-bedrock-runtime"
 
@@ -15,7 +15,7 @@ import { BedrockRuntimeClient } from "@aws-sdk/client-bedrock-runtime"
     },
     {
       provide: I_LLM_GATEWAY,
-      useClass: LlmGatewayService,
+      useClass: BedRockGatewayService,
     },
   ],
   exports: [I_LLM_GATEWAY],

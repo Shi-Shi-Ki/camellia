@@ -19,7 +19,7 @@ export class BotCallEventService implements ISlackBotRegisterHandler {
         console.log(payload)
         try {
           const reply = await this.llmGateway.generateReply(payload.cleanedText)
-          await sayThread(reply)
+          await sayThread(reply.text)
         } catch (e) {
           this.logger.error(e)
         }
