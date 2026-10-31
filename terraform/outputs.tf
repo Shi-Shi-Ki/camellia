@@ -1,9 +1,9 @@
 output "permission_set_arn" {
-  value       = aws_ssoadmin_permission_set.slack_bot_bedrock.arn
-  description = "作成したBedrock呼び出し許可パーミッションセットのARN"
+  value       = try(module.llm[0].permission_set_arn, null)
+  description = "作成したBedrock呼び出し許可パーミッションセットのARN（enable_bedrock=falseの場合はnull）"
 }
 
 output "assigned_account_id" {
-  value       = data.aws_caller_identity.current.account_id
-  description = "権限を割り当てたAWSアカウントID"
+  value       = try(module.llm[0].assigned_account_id, null)
+  description = "権限を割り当てたAWSアカウントID（enable_bedrock=falseの場合はnull）"
 }

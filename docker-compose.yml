@@ -1,0 +1,26 @@
+services:
+  redis_server:
+    container_name: redis_server
+    image: redis:8.8.3
+    ports:
+      - "16379:6379"
+    networks:
+      - app_net
+  local_stack:
+    image: localstack/localstack:2026.10
+    container_name: local_stack
+    environment:
+      - MAIN_CONTAINER_NAME=local_stack
+      - SERVICES=s3,s3controller,logs,kms,ssm
+      - AWS_DEFAULT_REGION=${AWS_REGION}
+      - DEBUG=${DEBUG:-0}
+    volumes:
+      - "${LOCAL_STACK_VOLUME_DIR:-./volume}:/var/lib/local-stack"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    hostname: local-stack-host
+    ports:
+      - 4566:4566
+    networks:
+      - app_net
+networks:
+  app_net:

@@ -3,10 +3,12 @@ import { App } from "@slack/bolt"
 import { SlackBotGatewayService } from "./slack-bot.gateway.service"
 import { I_CHAT_BOT_GATEWAY, type IChatBotGateway } from "@/domain/gateways/i-chat-bot.gateway"
 import { SlackRouterRepositoryService } from "./slack-router.repository.service"
-import { PresentationModule } from "@/presentation/presentation.module"
+// import { PresentationModule } from "@/presentation/presentation.module"
+import { BotEventModule } from "@/presentation/bot/slack/apps/events/bot-event.module"
 
 @Module({
-  imports: [PresentationModule],
+  // imports: [PresentationModule],
+  imports: [BotEventModule],
   providers: [
     {
       provide: "SLACK_BOLT_APP",
