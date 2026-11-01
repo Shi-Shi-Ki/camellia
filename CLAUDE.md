@@ -31,7 +31,7 @@
 ## プロジェクト固有の注意点
 - Terraform の state はローカル（terraform/terraform.tfstate）にあり、backend は未設定。変数は terraform/value.tfvars（git 管理外）
 - パスエイリアス（`@domain/*` `@infrastructure/*` など）は tsconfig.json の paths で定義している
-- 環境変数（.env.example は deny で読めないため、ここに列挙する）: `BOT_USER_OAUTH_TOKEN` `SOCKET_TOKEN` `SLACK_SIGNING_SECRET` `PORT` `AWS_REGION` `BEDROCK_MODEL_ID` `DIFY_API_URL` `DIFY_API_KEY`。docker-compose.yml は `DEBUG` `LOCAL_STACK_VOLUME_DIR` も使う
+- 必要な環境変数は .env.example を参照する。コードが参照するのは `BOT_USER_OAUTH_TOKEN` `SOCKET_TOKEN` `SLACK_SIGNING_SECRET` `PORT` `AWS_REGION` `BEDROCK_MODEL_ID` `DIFY_API_URL` `DIFY_API_KEY`、docker-compose.yml は `DEBUG` `LOCAL_STACK_VOLUME_DIR` も使う
 
 ## 参照
 - チーム共通の規約: .claude/rules/team-*.md（中央リポジトリから同期。ここでは編集しない）
