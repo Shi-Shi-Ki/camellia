@@ -1,0 +1,12 @@
+name: probe-self-ref-caller
+
+# 検証用（マージしない）: camellia から cosmos の reusable workflow を呼ぶ（実際の使われ方と同じ呼び方）
+on:
+  pull_request:
+
+jobs:
+  remote:
+    permissions:
+      contents: read
+      id-token: write
+    uses: "Shi-Shi-Ki/cosmos/.github/workflows/probe-self-ref.yml@probe/self-ref"
