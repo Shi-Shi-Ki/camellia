@@ -24,7 +24,7 @@
 - `terraform apply` を実行しない（人間が行う）
 - 新しい依存パッケージを追加する前に確認を取る
 - 設計判断（ライブラリ選定、データモデル変更、アーキテクチャ変更）は実装前に選択肢を提示し、docs/adr/ に ADR の下書きを作る
-- `aws` コマンドでリソースを作成・変更・削除しない（参照系のみ）。`aws ssm get-parameter(s) --with-decryption` で SecureString を復号しない
+- AWS のリソースを変更しうるコマンド（create / update / delete / put / invoke / `ssm start-session` など）は、実行前にコマンドと影響範囲を提示して確認を取る。describe / list / get は確認なしで実行してよい。`--with-decryption` で SecureString を復号しない
 - `terraform/*.tfstate*`・`*.tfvars`・`.env` を読まない
 - `docker compose down -v` を実行しない（LocalStack / Redis のデータが消える）
 
