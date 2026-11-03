@@ -1,0 +1,33 @@
+{
+  "display_information": {
+    "name": "Slackアプリ検証用",
+    "description": "SlackBoltの検証用アプリ",
+    "background_color": "#918f00"
+  },
+  "features": {
+    "bot_user": {
+      "display_name": "SlackBoltTestApp",
+      "always_online": true
+    }
+  },
+  "oauth_config": {
+    "scopes": {
+      "user": ["users:read.email", "users:read", "chat:write", "im:write"],
+      "bot": ["app_mentions:read", "chat:write", "im:history", "im:write"]
+    },
+    "pkce_enabled": false
+  },
+  "settings": {
+    "event_subscriptions": {
+      "request_url": "https://906f-103-5-140-182.ngrok-free.app/slack/events",
+      "bot_events": ["app_mention", "message.im"]
+    },
+    "interactivity": {
+      "is_enabled": true
+    },
+    "org_deploy_enabled": false,
+    "socket_mode_enabled": true,
+    "token_rotation_enabled": false,
+    "is_mcp_enabled": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "extraKnownMarketplaces": {
+    "cosmos": {
+      "source": {
+        "source": "github",
+        "repo": "Shi-Shi-Ki/cosmos"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "team-dev@cosmos": true
+  },
+  "permissions": {
+    "deny": [
+      "Bash(terraform apply:*)",
+      "Bash(terraform destroy:*)",
+      "Bash(aws *--with-decryption*)",
+      "Read(./.env)",
+      "Read(./.env.local)",
+      "Read(./.env.*.local)",
+      "Read(./.env.production)",
+      "Read(./.env.staging)",
+      "Read(./**/*.tfvars)",
+      "Read(./**/*.tfstate)",
+      "Read(./**/*.tfstate.*)",
+      "Bash(docker compose down *-v*)",
+      "Bash(docker compose down *--volumes*)",
+      "Bash(docker-compose down *-v*)",
+      "Bash(docker-compose down *--volumes*)"
+    ],
+    "allow": [
+      "Bash(pnpm test:*)",
+      "Bash(pnpm lint:*)",
+      "Bash(pnpm exec tsc --noEmit:*)",
+      "Bash(terraform fmt:*)",
+      "Bash(terraform validate:*)",
+      "Bash(terraform plan:*)",
+      "Bash(aws * describe-*)",
+      "Bash(aws * list-*)",
+      "Bash(aws s3 ls:*)"
+    ],
+    "disableBypassPermissionsMode": "disable"
+  }
+}
