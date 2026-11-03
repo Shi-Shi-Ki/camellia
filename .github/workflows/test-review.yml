@@ -12,4 +12,5 @@ jobs:
     uses: Shi-Shi-Ki/cosmos/.github/workflows/claude-review.yml@fix/claude-review
     with:
       pr-number: ${{ github.event.pull_request.number }}
+      use-workflow-token: true
     secrets: inherit
