@@ -3,5 +3,6 @@ import { SubmitCreateChannelApplyService } from "./submit-create-channel-apply.s
 
 @Module({
   providers: [SubmitCreateChannelApplyService],
+  exports: [SubmitCreateChannelApplyService],
 })
 export class BotEventCallbackModule {}

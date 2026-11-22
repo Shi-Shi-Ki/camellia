@@ -1,3 +1,4 @@
+import { getEnvValueOrFail } from "@/common/utils"
 import { LlmReply, type ILlmGateway } from "@/domain/gateways/i-llm.gateway"
 import { BedrockRuntimeClient, ConverseCommand } from "@aws-sdk/client-bedrock-runtime"
 import { Inject, Injectable, Logger } from "@nestjs/common"
@@ -8,7 +9,10 @@ export class BedRockGatewayService implements ILlmGateway {
   private readonly modelId: string
 
   constructor(@Inject("BEDROCK_RUNTIME_CLIENT") private readonly client: BedrockRuntimeClient) {
-    this.modelId = process.env.BEDROCK_MODEL_ID ?? "anthropic.claude-3-5-haiku-20241022-v1:0"
+    this.modelId = getEnvValueOrFail(
+      process.env.BEDROCK_MODEL_ID,
+      "anthropic.claude-3-5-haiku-20241022-v1:0"
+    )
   }
 
   async generateReply(prompt: string): Promise<LlmReply> {

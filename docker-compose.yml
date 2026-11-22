@@ -10,6 +10,7 @@ services:
     image: localstack/localstack:2026.10
     container_name: local_stack
     environment:
+      - LOCALSTACK_AUTH_TOKEN=${LOCALSTACK_AUTH_TOKEN}
       - MAIN_CONTAINER_NAME=local_stack
       - SERVICES=s3,s3controller,logs,kms,ssm
       - AWS_DEFAULT_REGION=${AWS_REGION}

@@ -4,6 +4,7 @@ import { ModalView } from "@slack/web-api"
 
 export abstract class AbstractModalOpener implements IModalOpener {
   abstract readonly menuValue: string
+  abstract readonly label: string
   abstract readonly callbackId: string
 
   protected abstract buildView(

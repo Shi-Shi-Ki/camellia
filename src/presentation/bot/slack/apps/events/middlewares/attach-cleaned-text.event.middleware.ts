@@ -1,6 +1,7 @@
 import type { SlackEventMiddlewareArgs, AllMiddlewareArgs } from "@slack/bolt"
 import { stripSlackMentions } from "@/common/utils"
 import { ChatPostMessageResponse } from "@slack/web-api"
+import type { KnownBlock } from "@slack/types"
 
 type MentionEventArgs = SlackEventMiddlewareArgs<"app_mention"> & AllMiddlewareArgs
 
@@ -8,9 +9,13 @@ type CleanedMentionPayload = MentionEventArgs["payload"] & {
   cleanedText: string
 }
 
+type SayThreadOptions = {
+  blocks?: KnownBlock[]
+}
+
 type CleanedMentionArgs = Omit<MentionEventArgs, "payload"> & {
   payload: CleanedMentionPayload
-  sayThread: (message: string) => Promise<ChatPostMessageResponse>
+  sayThread: (message: string, options?: SayThreadOptions) => Promise<ChatPostMessageResponse>
 }
 
 /**
@@ -23,7 +28,8 @@ export function withCleanedMention(
   return async (args) => {
     const cleanedText = stripSlackMentions(args.payload.text)
     const threadTs = ("thread_ts" in args.payload && args.payload.thread_ts) || args.payload.ts
-    const sayThread = (message: string) => args.say({ text: message, thread_ts: threadTs })
+    const sayThread = (message: string, options?: SayThreadOptions) =>
+      args.say({ text: message, thread_ts: threadTs, ...options })
 
     await handler({
       ...args,

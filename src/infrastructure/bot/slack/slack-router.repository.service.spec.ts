@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { SlackRouterRepositoryService } from './slack-router.repository.service';
+import { Test, TestingModule } from "@nestjs/testing"
+import { SlackRouterRepositoryService } from "./slack-router.repository.service"
 
-describe('SlackRouterRepositoryService', () => {
-  let service: SlackRouterRepositoryService;
+describe("SlackRouterRepositoryService", () => {
+  let service: SlackRouterRepositoryService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [SlackRouterRepositoryService],
-    }).compile();
+    }).compile()
 
-    service = module.get<SlackRouterRepositoryService>(SlackRouterRepositoryService);
-  });
+    service = module.get<SlackRouterRepositoryService>(SlackRouterRepositoryService)
+  })
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+  it("should be defined", () => {
+    expect(service).toBeDefined()
+  })
+})

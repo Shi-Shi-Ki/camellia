@@ -1,6 +1,7 @@
 import { SSMClient } from "@aws-sdk/client-ssm"
 import { Module } from "@nestjs/common"
 import { SsmGatewayService } from "./ssm.gateway.service"
+import { getEnvValueOrFail } from "@/common/utils"
 
 @Module({
   providers: [
@@ -8,7 +9,7 @@ import { SsmGatewayService } from "./ssm.gateway.service"
       provide: "SSM_CLIENT",
       useFactory: () => {
         return new SSMClient({
-          region: process.env.AWS_REGION ?? "ap-northeast-1",
+          region: getEnvValueOrFail(process.env.AWS_REGION, "ap-northeast-1"),
         })
       },
     },

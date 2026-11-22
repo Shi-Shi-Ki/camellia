@@ -1,18 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { CreateChannelModalService } from './create-channel.modal.service';
+import { Test, TestingModule } from "@nestjs/testing"
+import { CreateChannelModalService } from "./create-channel.modal.service"
 
-describe('CreateChannelModalService', () => {
-  let service: CreateChannelModalService;
+describe("CreateChannelModalService", () => {
+  let service: CreateChannelModalService
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       providers: [CreateChannelModalService],
-    }).compile();
+    }).compile()
 
-    service = module.get<CreateChannelModalService>(CreateChannelModalService);
-  });
+    service = module.get<CreateChannelModalService>(CreateChannelModalService)
+  })
 
-  it('should be defined', () => {
-    expect(service).toBeDefined();
-  });
-});
+  it("should be defined", () => {
+    expect(service).toBeDefined()
+  })
+})

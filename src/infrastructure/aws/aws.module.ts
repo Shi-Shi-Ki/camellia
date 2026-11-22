@@ -3,6 +3,7 @@ import { BedRockGatewayService } from "./bedrock/bedrock.gateway.service"
 import { I_LLM_GATEWAY } from "@/domain/gateways/i-llm.gateway"
 import { BedrockRuntimeClient } from "@aws-sdk/client-bedrock-runtime"
 import { SsmModule } from "./ssm/ssm.module"
+import { getEnvValueOrFail } from "@/common/utils"
 
 @Module({
   providers: [
@@ -10,7 +11,7 @@ import { SsmModule } from "./ssm/ssm.module"
       provide: "BEDROCK_RUNTIME_CLIENT",
       useFactory: () => {
         return new BedrockRuntimeClient({
-          region: process.env.AWS_REGION ?? "ap-northeast-1",
+          region: getEnvValueOrFail(process.env.AWS_REGION, "ap-northeast-1"),
         })
       },
     },

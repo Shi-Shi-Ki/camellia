@@ -10,7 +10,7 @@ variable "slack_user_oauth_token" {
   default     = "xoxp-*"
 }
 
-variable "slack_bot_user_oauth_token" {
+variable "slack_bot_oauth_token" {
   description = "slack bot oauth token"
   type        = string
   default     = "xoxb-*"
@@ -19,7 +19,7 @@ variable "slack_bot_user_oauth_token" {
 variable "slack_signing_secret" {
   description = "slack signing secret value"
   type        = string
-  default     = ""
+  default     = "xxxxx"
 }
 
 variable "slack_socket_token" {

@@ -13,21 +13,22 @@
   "oauth_config": {
     "scopes": {
       "user": ["users:read.email", "users:read", "chat:write", "im:write"],
-      "bot": ["app_mentions:read", "chat:write", "im:history", "im:write"]
+      "bot": ["chat:write.public", "app_mentions:read", "chat:write", "im:history", "im:write"]
     },
     "pkce_enabled": false
   },
   "settings": {
     "event_subscriptions": {
-      "request_url": "https://906f-103-5-140-182.ngrok-free.app/slack/events",
-      "bot_events": ["app_mention", "message.im"]
+      "bot_events": ["app_mention", "message.im"],
+      "request_url": "https://906f-103-5-140-182.ngrok-free.app/slack/events"
     },
     "interactivity": {
       "is_enabled": true
     },
     "org_deploy_enabled": false,
     "socket_mode_enabled": true,
+    "is_mcp_enabled": false,
     "token_rotation_enabled": false,
-    "is_mcp_enabled": false
+    "app_level_token_rotation_enabled": false
   }
 }

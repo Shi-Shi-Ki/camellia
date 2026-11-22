@@ -1,3 +1,4 @@
+import { getEnvValueOrFail } from "@/common/utils"
 import { ILlmGateway, LlmReply } from "@/domain/gateways/i-llm.gateway"
 import { Injectable, Logger } from "@nestjs/common"
 
@@ -13,8 +14,8 @@ export class DifyGatewayService implements ILlmGateway {
   private readonly apiKey: string
 
   constructor() {
-    this.baseUrl = process.env.DIFY_API_URL ?? "http://localhost/v1"
-    this.apiKey = process.env.DIFY_API_KEY ?? ""
+    this.baseUrl = getEnvValueOrFail(process.env.DIFY_API_URL, "http://localhost/v1")
+    this.apiKey = getEnvValueOrFail(process.env.DIFY_API_KEY)
   }
 
   async generateReply(prompt: string, conversationId?: string): Promise<LlmReply> {
