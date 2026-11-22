@@ -1,0 +1,16 @@
+{
+  "editor.formatOnSave": true,
+
+  "[terraform]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+  "[terraform-vars]": {
+    "editor.defaultFormatter": "hashicorp.terraform",
+    "editor.formatOnSave": true,
+    "editor.tabSize": 2
+  },
+
+  "cSpell.userWords": ["dify"]
+}
